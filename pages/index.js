@@ -1,6 +1,5 @@
 import Layout from "@/components/Layout";
 import Card from "@/components/card";
-import BarChart from "@/components/charts/BarChart";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -15,7 +14,6 @@ import co2Icon from '../public/icons/co2.png';
 export default function Home() {
   const [loading, setLoading] = useState(true);
   
-  const [formattedTimeStamps, setFormattedTimeStamps] = useState([]);
   const [tempData, setTempData] = useState([]);
   const [humidityData, setHumidityData] = useState([]);
   const [carbonMonoxideData, setCarbonMonoxideData] = useState([]);
@@ -30,7 +28,6 @@ export default function Home() {
         .get("/api/sensorsData")
         .then((response) => {
           distributeData(response.data.data);
-          formatTimeStamp(response.data.data);
           setLoading(false);
         })
         .catch((error) => {
@@ -41,35 +38,12 @@ export default function Home() {
     fetchData();
   }, []);
 
-  const formatTimeStamp = (sensorData) => {
-    
-    let prevDate = null;
-
-    const timestamps = sensorData.map((row) => {
-      if(row[0] === "Timestamp") return null;
-      const [datePart, timePart] = row[0].split(" "); 
-      const [day, month, year] = datePart.split("-").map(Number); 
-      const [hours, minutes] = timePart.split(":").map(Number);
-      
-
-      if (prevDate === null || prevDate !== `${day}/${month}/${year}`) {
-        prevDate = `${day}/${month}/${year}`;
-        return `${day}/${month}/${year} ${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
-      } else {
-        return `${hours}:${minutes < 10 ? '0' + minutes : minutes}`;
-      }
-      
-    });
-    
-    setFormattedTimeStamps(timestamps);
-  };
-  
   const distributeData = (sensorData) => {
       sensorData.forEach(row => {
-        const [timestamp, temperature, humidity, co2, ammonia, butane, propane] = row;
+        const [timestamp, temperature, humidity, co2, ammonia, butane, propane, carbonMonoxide] = row;
         setTempData(prevData => [...prevData, temperature]);
         setHumidityData(prevData => [...prevData, humidity]);
-        setCarbonMonoxideData(prevData => [...prevData, co2]); // after replace with actual value
+        setCarbonMonoxideData(prevData => [...prevData, carbonMonoxide]); 
         setCo2Data(prevData => [...prevData, co2]);
         setAmmoniaData(prevData => [...prevData, ammonia]);
         setButaneData(prevData => [...prevData, butane]);
@@ -94,7 +68,6 @@ export default function Home() {
             <Card imgPath={carbonMonoxideIcon} title={"Carbon Monoxide (co)"} data={carbonMonoxideData} unit={"Parts Per Million (ppm)"}  path={"/carbon-monoxide"}/>
             <Card imgPath={co2Icon} title={"Carbon dioxide (co2)"} data={co2Data} unit={"Parts Per Million (ppm)"}  path={"/carbon-dioxide"}/>
           </div>
-          {/* <BarChart formattedTimeStamps={formattedTimeStamps} tempData={tempData} humidityData={humidityData} /> */}
         </div>
       )}
     </Layout>

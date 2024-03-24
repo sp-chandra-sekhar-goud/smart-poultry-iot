@@ -24,13 +24,13 @@ export default function BarChart({ formattedTimeStamps, tempData, humidityData }
             borderColor: "rgb(255, 99, 132)",
             borderWidth: 1,
           },
-          {
-            label: "Humidity",
-            data: humidityData,
-            backgroundColor: "rgba(54, 162, 235, 1)",
-            borderColor: "rgb(54, 162, 235)",
-            borderWidth: 1,
-          },
+          // {
+          //   label: "Humidity",
+          //   data: humidityData,
+          //   backgroundColor: "rgba(54, 162, 235, 1)",
+          //   borderColor: "rgb(54, 162, 235)",
+          //   borderWidth: 1,
+          // },
         ],
       },
       options: {
