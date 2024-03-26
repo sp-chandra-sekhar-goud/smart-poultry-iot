@@ -23,7 +23,7 @@ import blueco2Icon from "../public/blueNavIcons/co2.png";
 
 export default function Nav() {
   const inactivelink = " flex gap-1 text-white items-center p-2 mb-3 ";
-  const activelink = inactivelink + " bg-white text-blue-800 rounded";
+  const activelink = inactivelink + "  text-blue-700 bg-white rounded";
 
   const router = useRouter();
   const { pathname } = router;

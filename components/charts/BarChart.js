@@ -1,7 +1,7 @@
 import { Chart } from "chart.js/auto";
 import { useEffect, useRef } from "react";
 
-export default function BarChart({ formattedTimeStamps, tempData, humidityData }) {
+export default function BarChart({ formattedTimeStamps, tempData }) {
   const chartRef = useRef(null);
 
   useEffect(() => {
@@ -23,14 +23,8 @@ export default function BarChart({ formattedTimeStamps, tempData, humidityData }
             backgroundColor: "rgba(255, 99, 132, 1)",
             borderColor: "rgb(255, 99, 132)",
             borderWidth: 1,
+            barPercentage: 0.5,
           },
-          // {
-          //   label: "Humidity",
-          //   data: humidityData,
-          //   backgroundColor: "rgba(54, 162, 235, 1)",
-          //   borderColor: "rgb(54, 162, 235)",
-          //   borderWidth: 1,
-          // },
         ],
       },
       options: {
@@ -42,9 +36,15 @@ export default function BarChart({ formattedTimeStamps, tempData, humidityData }
           x: {
             type: "category",
             position: "bottom",
+            grid: {
+              drawOnChartArea: false,
+            },
           },
           y: {
             beginAtZero: true,
+            grid: {
+              drawBorder: false,
+            },
           },
         },
         plugins: {
@@ -61,10 +61,10 @@ export default function BarChart({ formattedTimeStamps, tempData, humidityData }
       },
     });
     chartRef.current.chart = newChart;
-  }, [tempData, humidityData]);
+  }, [tempData]);
 
   return (
-    <div className=" p-6 rounded w-fit">
+    <div className="p-6 rounded w-fit">
       <h1>Temperature & Humidity</h1>
       <div className="w-[40vw] overflow-x-auto">
         <div className="w-[100vw] h-[60vh]">
