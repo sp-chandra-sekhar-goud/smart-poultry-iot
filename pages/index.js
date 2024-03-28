@@ -1,3 +1,5 @@
+"use client"
+
 import Layout from "@/components/Layout";
 import Card from "@/components/card";
 import axios from "axios";
@@ -21,7 +23,9 @@ export default function Home() {
   const [ammoniaData, setAmmoniaData] = useState([]);
   const [butaneData, setButaneData] = useState([]);
   const [propaneData, setPropaneData] = useState([]);
-  
+
+  const [lastUpdatedTime, setLastUpdatedTime] = useState("");
+
   useEffect(() => {
     async function fetchData() {
       axios
@@ -48,6 +52,9 @@ export default function Home() {
         setAmmoniaData(prevData => [...prevData, ammonia]);
         setButaneData(prevData => [...prevData, butane]);
         setPropaneData(prevData => [...prevData, propane]);
+
+        const latestTimestamp = sensorData.length > 0 ? sensorData[sensorData.length - 1][0] : "";
+        setLastUpdatedTime(latestTimestamp);
       });
   };
     
@@ -58,7 +65,8 @@ export default function Home() {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div>
+        <div className="flex flex-col ">
+          <h1 className="text-lg px-4 my-4">Lastly updated at <span className="font-bold">{lastUpdatedTime}</span></h1>
           <div className="grid grid-cols-3">            
             <Card imgPath={tempIcon} title={"Temperature"} data={tempData} unit={"Celsius (°c)"} path={"/temperature"}/>
             <Card imgPath={humidityIcon} title={"Humidity"} data={humidityData} unit={"Percentage (%)"}  path={"/humidity"}/>

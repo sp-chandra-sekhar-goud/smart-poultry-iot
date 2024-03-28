@@ -14,7 +14,7 @@ export default function handler(req, res) {
       const totalRows = values.length;
       const startRow = Math.max(totalRows - 100, 0);
       const endRow = totalRows - 1;
-      const range = `Sheet1!A${startRow + 2}:G${endRow + 2}`; // +2 to skip the header row
+      const range = `Sheet1!A${startRow + 2}:H${endRow + 2}`; // +2 to skip the header row
 
       // Fetch the last 100 rows using the calculated range
       return sheets.spreadsheets.values.get({
