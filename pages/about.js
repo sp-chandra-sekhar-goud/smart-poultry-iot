@@ -73,8 +73,8 @@ export default function About() {
 
   return (
     <Layout>
-      <div className="p-8 w-[75vw]">
-        <h1 className="font-bold text-[2vw] underline">
+      <div className="p-8 w-[100vw] md:w-[75vw]">
+        <h1 className="font-bold text-[6vw] md:text-[2vw] underline">
           Air Quality Monitoring
         </h1>
         <p className="mt-2 text-justify">
@@ -89,37 +89,67 @@ export default function About() {
         </p>
 
         <div class="my-6">
-          <h1 class="font-bold text-2xl underline">ESP32</h1>
-          <div class="flex gap-8">
-            <Image src={ESP32} alt="Sensor" class="w-[20vw] object-contain" />
-            <div>
-              <div className="flex gap-2">
-              <p class="font-bold">Name:</p>
-              <p>ESP32</p>
-              </div>
-              <p class="font-bold">Microcontroller:</p>
-              <p>Tensilica Xtensa LX6 dual-core processor</p>
-              <p class="font-bold">Operating Frequency:</p>
-              <p>Up to 240 MHz</p>
-              <p class="font-bold">Wi-Fi:</p>
-              <p>
-                802.11 b/g/n (2.4 GHz) and Bluetooth v4.2 BR/EDR and BLE
-                (Bluetooth Low Energy)
+          <h1 class="font-bold text-2xl underline">Node MCU ESP32</h1>
+          <div class="flex flex-col md:flex-row gap-8">
+            <Image
+              src={ESP32}
+              alt="Sensor"
+              class="w-[140vw] md:w-[20vw] object-contain"
+            />
+            <div className="w-[90vw] md:w-[40vw]">
+              <p class="font-bold">
+                Name:<span className="font-normal pl-1">ESP32</span>
               </p>
-              <p class="font-bold">Flash Memory:</p>
-              <p>4 MB</p>
-              <p class="font-bold">RAM:</p>
-              <p>520 KB SRAM</p>
-              <p class="font-bold">GPIO:</p>
-              <p>Up to 36 GPIO pins (depending on the variant)</p>
-              <p class="font-bold">Analog Inputs:</p>
-              <p>Up to 18 ADC channels</p>
-              <p class="font-bold">Digital Interfaces:</p>
-              <p>SPI, I2C, UART, I2S</p>
-              <p class="font-bold">Operating Voltage:</p>
-              <p>3.3V</p>
-              <p class="font-bold">Power Consumption:</p>
-              <p>Varies depending on usage, typically:</p>
+
+              <p class="font-bold">
+                Microcontroller:
+                <span className="font-normal pl-1">
+                  Tensilica Xtensa LX6 dual-core processor
+                </span>
+              </p>
+
+              <p class="font-bold">
+                Operating Frequency:
+                <span className="font-normal pl-1">Up to 240 MHz</span>
+              </p>
+              <p class="font-bold">
+                Wi-Fi:
+                <span className="font-normal pl-1">
+                  {" "}
+                  802.11 b/g/n (2.4 GHz) and Bluetooth v4.2 BR/EDR and BLE
+                  (Bluetooth Low Energy)
+                </span>
+              </p>
+
+              <p class="font-bold">
+                Flash Memory:<span className="font-normal pl-1">4 MB</span>
+              </p>
+              <p class="font-bold">
+                RAM:<span className="font-normal pl-1">520 KB SRAM</span>
+              </p>
+              <p class="font-bold">
+                GPIO:
+                <span className="font-normal pl-1">
+                  Up to 36 GPIO pins (depending on the variant)
+                </span>
+              </p>
+              <p class="font-bold">
+                Analog Inputs:
+                <span className="font-normal pl-1">Up to 18 ADC channels</span>
+              </p>
+              <p class="font-bold">
+                Digital Interfaces:
+                <span className="font-normal pl-1">SPI, I2C, UART, I2S</span>
+              </p>
+              <p class="font-bold">
+                Operating Voltage:<span className="font-normal pl-1">3.3V</span>
+              </p>
+              <p class="font-bold">
+                Power Consumption:
+                <span className="font-normal pl-1">
+                  Varies depending on usage, typically:
+                </span>
+              </p>
               <ul class="list-disc pl-6">
                 <li>
                   Active mode: 80 mA (Wi-Fi), 7 mA (Bluetooth), 150 µA (RTC)
@@ -131,7 +161,9 @@ export default function About() {
         </div>
 
         <div className="my-6">
-          <h1 className="font-bold text-[2vw] underline">Sensors</h1>
+          <h1 className="font-bold text-2xl md:text-[2vw] underline">
+            Sensors
+          </h1>
           <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
             {sensorCards}
           </div>

@@ -42,8 +42,11 @@ function findNearestDateIndex(values, targetDate, isEndDate = false) {
 }
 export default function handler(req, res) {
   if (req.method === "GET") {
-    const startDate = req.query.startDate;
-    const endDate = req.query.endDate;
+    let startDate = req.query.startDate;
+    let endDate = req.query.endDate;
+    
+    startDate = startDate.split("T")[0];
+    endDate = endDate.split("T")[0];
 
     sheets.spreadsheets.values
       .get({
@@ -53,9 +56,9 @@ export default function handler(req, res) {
       .then((response) => {
         const values = response.data.values;
         const filteredValues = values.filter((row) => {
-        const date = parseCustomDate(row[0]);
-        const startDateObj = new Date(startDate);
-        const endDateObj = new Date(endDate);
+          const date = parseCustomDate(row[0]);
+          const startDateObj = new Date(startDate);
+          const endDateObj = new Date(endDate);
 
           return date >= startDateObj && date <= endDateObj;
         });
@@ -69,7 +72,9 @@ export default function handler(req, res) {
           const endIndex = findNearestDateIndex(values, endDate, true);
 
           if (startIndex === -1 || endIndex === -1) {
-            return res.status(404).json({ message: "No data found for the specified date range" });
+            return res
+              .status(404)
+              .json({ message: "No data found for the specified date range" });
           }
           // Construct the range based on the start and end indices
           const range = `Sheet1!A${startIndex + 1}:B${endIndex + 1}`;
