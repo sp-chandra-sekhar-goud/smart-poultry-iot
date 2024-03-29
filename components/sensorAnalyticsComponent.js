@@ -11,7 +11,7 @@ export default function SensorAnalyticsComponent({ parameter, endPoint }) {
     return today;
   });
   const [endDate, setEndDate] = useState(new Date());
-  const [tempData, setData] = useState([]);
+  const [data, setData] = useState([]);
   const [formattedTimeStamps, setFormattedTimeStamps] = useState([]);
   const [selectedInterval, setSelectedInterval] = useState("10mins");
   const [loading, setLoading] = useState(true);
@@ -44,13 +44,14 @@ export default function SensorAnalyticsComponent({ parameter, endPoint }) {
             selectedInterval={selectedInterval}
           />
 
-          {tempData.length === 0 && (
+          {data.length === 0 && (
             <h1>No data found for the specified date range</h1>
           )}
-          {tempData.length > 0 && (
+          {data.length > 0 && (
             <BarChart
+              parameter={parameter}
               formattedTimeStamps={formattedTimeStamps}
-              tempData={tempData}
+              data={data}
             />
           )}
 

@@ -1,4 +1,3 @@
-"use client";
 import Layout from "@/components/Layout";
 import "react-datepicker/dist/react-datepicker.css";
 import SensorAnalyticsComponent from "@/components/sensorAnalyticsComponent";

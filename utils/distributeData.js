@@ -7,7 +7,7 @@ const distributeData = (
   sensorData,
   selectedInterval,
   setFormattedTimeStamps,
-  setTempData
+  setData
 ) => {
   const intervalMap = {
     "1min": 1,
@@ -24,14 +24,14 @@ const distributeData = (
     return handleOneDayInterval({
       sensorData: sensorData,
       setFormattedTimeStamps: setFormattedTimeStamps,
-      setData: setTempData,
+      setData: setData,
     });
   }
 
   let total = 0,
     observations = 0;
   const timeStamps = [];
-  const tempData = [];
+  const data = [];
 
   const uniqueSensorData = uniqueData(sensorData);
 
@@ -41,8 +41,8 @@ const distributeData = (
   );
 
   for (let i = 0; i < uniqueSensorData.length; i++) {
-    const [timestamp, temp] = uniqueSensorData[i];
-    total += parseFloat(temp);
+    const [timestamp, value] = uniqueSensorData[i];
+    total += parseFloat(value);
     observations++;
 
     if (
@@ -52,7 +52,7 @@ const distributeData = (
         uniqueSensorData[i + 1][0] > expectedNextTimeStamp)
     ) {
       const val = total / observations;
-      tempData.push(val.toFixed(2));
+      data.push(val.toFixed(2));
 
       if (
         expectedNextTimeStamp > uniqueSensorData[uniqueSensorData.length - 1][0]
@@ -72,7 +72,7 @@ const distributeData = (
   }
 
   const formattedTimeStamps = formatTimeStamp(timeStamps);
-  return { formattedTimeStamps, tempData };
+  return { formattedTimeStamps, data };
 };
 
 export default distributeData;

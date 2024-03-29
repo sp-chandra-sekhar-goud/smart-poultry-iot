@@ -1,9 +1,9 @@
 import { Chart } from "chart.js/auto";
 import { useEffect, useRef } from "react";
 
-export default function BarChart({ formattedTimeStamps, tempData }) {
+export default function BarChart({parameter, formattedTimeStamps, data }) {
   const chartRef = useRef(null);
-
+  
   useEffect(() => {
     if (chartRef.current) {
       if (chartRef.current.chart) {
@@ -18,8 +18,8 @@ export default function BarChart({ formattedTimeStamps, tempData }) {
         labels: formattedTimeStamps,
         datasets: [
           {
-            label: "Temperature",
-            data: tempData,
+            label: parameter,
+            data: data,
             backgroundColor: "rgba(255, 99, 132, 1)",
             borderColor: "rgb(255, 99, 132)",
             borderWidth: 1,
@@ -61,7 +61,7 @@ export default function BarChart({ formattedTimeStamps, tempData }) {
       },
     });
     chartRef.current.chart = newChart;
-  }, [tempData]);
+  }, [data]);
 
   return (
     <div className="p-2 md:p-6 rounded w-[50vw] md:w-fit">

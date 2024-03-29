@@ -16,7 +16,7 @@ export default function handler(req, res) {
     sheets.spreadsheets.values
       .get({
         spreadsheetId: "1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk",
-        range: "Sheet1",
+        range: "Sheet1!A:C",
       })
       .then((response) => {
         const values = response.data.values;
@@ -42,7 +42,7 @@ export default function handler(req, res) {
               .json({ message: "No data found for the specified date range" });
           }
           // Construct the range based on the start and end indices
-          const range = `Sheet1!A${startIndex + 1}:B${endIndex + 1}`;
+          const range = `Sheet1!A${startIndex + 1}:C${endIndex + 1}`;
 
           // Fetch the data within the specified range
           return sheets.spreadsheets.values
@@ -51,7 +51,7 @@ export default function handler(req, res) {
               range: range,
             })
             .then((response) => {
-              const values = response.data.values;
+              const values = response.data.values.map((row) => [row[0], row[2]]);;
               res
                 .status(200)
                 .json({ message: "Data fetched successfully", data: values });

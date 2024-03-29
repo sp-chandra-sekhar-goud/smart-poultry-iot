@@ -27,7 +27,7 @@ const fetchData = async (
       return;
     }
     const sensorData = response.data.data;
-    const { formattedTimeStamps, tempData } = distributeData(
+    const { formattedTimeStamps, data } = distributeData(
       sensorData,
       selectedInterval,
       setFormattedTimeStamps,
@@ -35,7 +35,7 @@ const fetchData = async (
     );
     if (selectedInterval !== "1day") {
       setFormattedTimeStamps(formattedTimeStamps);
-      setData(tempData);
+      setData(data);
     }
     setLoading(false);
   } catch (error) {

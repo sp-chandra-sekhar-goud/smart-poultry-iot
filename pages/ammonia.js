@@ -1,11 +1,11 @@
 import Layout from "@/components/Layout";
+import "react-datepicker/dist/react-datepicker.css";
+import SensorAnalyticsComponent from "@/components/sensorAnalyticsComponent";
 
 export default function Ammonia() {
   return (
     <Layout>
-      <div>
-        <h1>Ammonia</h1>
-      </div>
+      <SensorAnalyticsComponent parameter={"Ammonia"} endPoint={"ammoniaData"}/>
     </Layout>
   );
 }

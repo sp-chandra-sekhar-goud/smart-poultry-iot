@@ -1,11 +1,11 @@
 import Layout from "@/components/Layout";
+import "react-datepicker/dist/react-datepicker.css";
+import SensorAnalyticsComponent from "@/components/sensorAnalyticsComponent";
 
 export default function CarbonDioxide() {
   return (
     <Layout>
-      <div>
-        <h1>Carbon Dioxide</h1>
-      </div>
+      <SensorAnalyticsComponent parameter={"CarbonDioxide"} endPoint={"carbonDioxideData"}/>
     </Layout>
   );
 }

@@ -1,11 +1,11 @@
 import Layout from "@/components/Layout";
+import "react-datepicker/dist/react-datepicker.css";
+import SensorAnalyticsComponent from "@/components/sensorAnalyticsComponent";
 
 export default function Humidity() {
   return (
     <Layout>
-      <div>
-        <h1>Humidity</h1>
-      </div>
+      <SensorAnalyticsComponent parameter={"Humidity"} endPoint={"humidityData"}/>
     </Layout>
   );
 }
