@@ -64,9 +64,9 @@ export default function BarChart({ formattedTimeStamps, tempData }) {
   }, [tempData]);
 
   return (
-    <div className="p-6 rounded w-fit">
+    <div className="p-2 md:p-6 rounded w-[50vw] md:w-fit">
       <h1>Temperature & Humidity</h1>
-      <div className="w-[40vw] overflow-x-auto">
+      <div className="w-[80vw] md:w-[50vw] lg:w-[40vw] overflow-x-auto">
         <div className="w-[100vw] h-[60vh]">
           <canvas ref={chartRef} />
         </div>

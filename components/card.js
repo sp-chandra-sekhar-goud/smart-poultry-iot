@@ -10,7 +10,7 @@ export default function Card({ imgPath, title, data, unit, path }) {
   const average = occurrences > 0 ? sum / occurrences : 0;
 
   return (
-    <div className="w-[20vw] bg-white rounded-lg shadow-lg p-4 px-8 m-4 border-2 border-gray-300">
+    <div className="w-[90vw] md:w-[25vw] lg:w-[20vw] bg-white rounded-lg shadow-lg p-4 px-8 m-4 border-2 border-gray-300">
       <Link href={path}>
         <div className=" flex flex-col items-center justify-center">
           <Image src={imgPath} width={100} height={100} alt={title} />

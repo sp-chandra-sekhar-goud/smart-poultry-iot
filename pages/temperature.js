@@ -12,7 +12,11 @@ export default function Temperature() {
   const [tempData, setTempData] = useState([]);
   const [selectedInterval, setSelectedInterval] = useState("10mins");
 
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(() => {
+    const today = new Date();
+    today.setDate(today.getDate() - 7);
+    return today;
+  });
   const [endDate, setEndDate] = useState(new Date());
   const currentDate = new Date();
 
@@ -217,10 +221,11 @@ export default function Temperature() {
       {loading ? (
         <h1>Loading...</h1>
       ) : (
-        <div className="flex flex-col gap-4 w-[40vw]">
+        <div className="flex flex-col md:items-start p-4 gap-4 w-[90vw] md:w-[60vw] lg:w-[40vw]">
           <h1>Temperature</h1>
-          <div className="flex flex-col space-y-4">
-            <div className="flex flex-col items-end md:flex-row md:space-x-4">
+          <div className="flex flex-col">
+            <div className="flex flex-col lg:flex-row gap-4 lg:items-end">
+              <div className="flex gap-4">
               <div className="w-full md:w-1/2">
                 <label
                   htmlFor="startDate"
@@ -258,9 +263,10 @@ export default function Temperature() {
                   className="w-full appearance-none shadow border rounded py-3 px-4"
                 />
               </div>
+              </div>
               <div>
                 <button
-                  className="px-4 py-2 my-1 rounded-md bg-blue-800 text-white"
+                  className="px-4 py-2 my-2 rounded-md bg-blue-800 text-white"
                   onClick={() => fetchData()}
                 >
                   Submit
@@ -283,7 +289,7 @@ export default function Temperature() {
 
           <div className="grid grid-cols-3 gap-2">
             <button
-              className={`px-4 py-2 rounded-md ${
+              className={`px-4 py-2 rounded-md w-[25vw] md:w-[20vw] lg:w-[10vw] ${
                 selectedInterval === "1min" ? "bg-yellow-500" : "bg-blue-800"
               }`}
               onClick={() => setSelectedInterval("1min")}
@@ -291,7 +297,7 @@ export default function Temperature() {
               1 min
             </button>
             <button
-              className={`px-4 py-2 rounded-md ${
+              className={`px-4 py-2 rounded-md w-[25vw] md:w-[20vw] lg:w-[10vw] ${
                 selectedInterval === "5mins" ? "bg-yellow-500" : "bg-blue-800"
               }`}
               onClick={() => setSelectedInterval("5mins")}
@@ -299,7 +305,7 @@ export default function Temperature() {
               5 mins
             </button>
             <button
-              className={`px-4 py-2 rounded-md ${
+              className={`px-4 py-2 rounded-md w-[25vw] md:w-[20vw] lg:w-[10vw] ${
                 selectedInterval === "10mins" ? "bg-yellow-500" : "bg-blue-800"
               }`}
               onClick={() => setSelectedInterval("10mins")}
@@ -307,7 +313,7 @@ export default function Temperature() {
               10 mins
             </button>
             <button
-              className={`px-4 py-2 rounded-md ${
+              className={`px-4 py-2 rounded-md w-[25vw] md:w-[20vw] lg:w-[10vw] ${
                 selectedInterval === "30mins" ? "bg-yellow-500" : "bg-blue-800"
               }`}
               onClick={() => setSelectedInterval("30mins")}
@@ -315,7 +321,7 @@ export default function Temperature() {
               30 mins
             </button>
             <button
-              className={`px-4 py-2 rounded-md ${
+              className={`px-4 py-2 rounded-md w-[25vw] md:w-[20vw] lg:w-[10vw] ${
                 selectedInterval === "1hr" ? "bg-yellow-500" : "bg-blue-800"
               }`}
               onClick={() => setSelectedInterval("1hr")}
@@ -323,7 +329,7 @@ export default function Temperature() {
               1 hr
             </button>
             <button
-              className={`px-4 py-2 rounded-md ${
+              className={`px-4 py-2 rounded-md w-[25vw] md:w-[20vw] lg:w-[10vw] ${
                 selectedInterval === "1day" ? "bg-yellow-500" : "bg-blue-800"
               }`}
               onClick={() => setSelectedInterval("1day")}

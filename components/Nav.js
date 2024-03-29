@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { MdOutlineMonitorHeart, MdSpaceDashboard } from "react-icons/md";
+import { FaCircleInfo } from "react-icons/fa6";
 import { IoClose, IoSettingsSharp } from "react-icons/io5";
 import { GrMenu } from "react-icons/gr";
 import { useRouter } from "next/router";
@@ -23,8 +24,8 @@ import blueco2Icon from "../public/blueNavIcons/co2.png";
 import { useState } from "react";
 
 export default function Nav() {
-  const inactivelink = " flex gap-1 text-white items-center p-2 mb-3 ";
-  const activelink = " flex gap-1 items-center p-2 mb-3 text-blue-800 bg-white rounded";
+  const inactivelink = " flex gap-1 text-white items-center p-2 mb-1 ";
+  const activelink = " flex gap-1 items-center p-1 mb-1 text-blue-800 bg-white rounded-l-lg";
 
   const [isNavOpen, setIsNavOpen] = useState(false);
   const router = useRouter();
@@ -178,6 +179,13 @@ export default function Nav() {
       Carbon Dioxide
     </Link>
     <Link
+      href={"/about"}
+      className={pathname.includes("/about") ? activelink : inactivelink}
+    >
+      <FaCircleInfo  className="w-[2vw] h-[2vw] m-2" />
+      About
+    </Link>
+    <Link
       href={"/settings"}
       className={pathname.includes("/settings") ? activelink : inactivelink}
     >
@@ -189,16 +197,17 @@ export default function Nav() {
 
   return (
     <>
-    <aside className="text-white lg:p-4 mt-2 ml-2">
+    <aside className="text-white lg:p-4 mt-2 ml-2 ">
       <a href="/" className={`${inactivelink} flex justify-between pr-6`}>
-        <div className="flex gap-2">
-        <MdOutlineMonitorHeart className="text-[6vw] lg:text-[1.5vw]" />
+        <div className="flex items-center gap-2">
+        <MdOutlineMonitorHeart className="text-[6vw] md:text-[3vw] lg:text-[1.5vw]" />
         <h1>Air Quality Monitoring</h1>
         </div>
+        <div className="block md:hidden">
         {isNavOpen ? <IoClose className="text-[6vw] font-bold" onClick={() => setIsNavOpen(false)}/> : <GrMenu className="text-[6vw] font-bold" onClick={() => setIsNavOpen(true)}/>}
-
+        </div>
       </a>
-      <div className="hidden lg:block"> <NavLinks/> </div>
+      <div className="hidden md:block"> <NavLinks/> </div>
     </aside>
     <div className=" lg:hidden">
       {isNavOpen && <NavLinks/>}
