@@ -1,5 +1,3 @@
-"use client"
-
 import Layout from "@/components/Layout";
 import Card from "@/components/card";
 import axios from "axios";
@@ -40,6 +38,13 @@ export default function Home() {
     }
 
     fetchData();
+    
+    const interval = setInterval(() => {
+      fetchData();
+    }, 30 * 60 * 1000);
+    
+    return () => clearInterval(interval);
+    
   }, []);
 
   const distributeData = (sensorData) => {
