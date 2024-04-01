@@ -9,6 +9,7 @@ const distributeData = (
   setFormattedTimeStamps,
   setData
 ) => {
+
   const intervalMap = {
     "1min": 1,
     "5mins": 5,
@@ -28,38 +29,39 @@ const distributeData = (
     });
   }
 
-  let total = 0,
-    observations = 0;
+  let total = 0,  observations = 0;
   const timeStamps = [];
   const data = [];
 
   const uniqueSensorData = uniqueData(sensorData);
+
 
   let expectedNextTimeStamp = getExpectedNextTimeStamp(
     uniqueSensorData[0][0],
     intervalMinutes
   );
 
+
   for (let i = 0; i < uniqueSensorData.length; i++) {
+
     const [timestamp, value] = uniqueSensorData[i];
+
+    let a = new Date(expectedNextTimeStamp);
+    let b = new Date(uniqueSensorData[uniqueSensorData.length - 1][0]);
+    let c = (i < uniqueSensorData.length - 1) && new Date(uniqueSensorData[i + 1][0]);
+    
     total += parseFloat(value);
     observations++;
 
-    if (
-      expectedNextTimeStamp >
-        uniqueSensorData[uniqueSensorData.length - 1][0] ||
-      (i < uniqueSensorData.length - 1 &&
-        uniqueSensorData[i + 1][0] > expectedNextTimeStamp)
-    ) {
+    if (a > b || ((i < uniqueSensorData.length - 1) && (c > a))) {
       const val = total / observations;
       data.push(val.toFixed(2));
-
-      if (
-        expectedNextTimeStamp > uniqueSensorData[uniqueSensorData.length - 1][0]
-      ) {
+  
+      if (a > b) {
         timeStamps.push(uniqueSensorData[uniqueSensorData.length - 1][0]);
         break;
       }
+      
       timeStamps.push(expectedNextTimeStamp);
       total = 0;
       observations = 0;
@@ -70,6 +72,7 @@ const distributeData = (
       );
     }
   }
+
 
   const formattedTimeStamps = formatTimeStamp(timeStamps);
   return { formattedTimeStamps, data };

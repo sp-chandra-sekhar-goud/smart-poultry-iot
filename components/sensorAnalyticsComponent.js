@@ -5,6 +5,9 @@ import IntervalButtons from "./intervalButtons";
 import axios from "axios";
 import distributeData from "../utils/distributeData";
 
+import { IoClose } from "react-icons/io5";
+import { GrMenu } from "react-icons/gr";
+import NavLinks from "./NavLinks";
 
 export default function SensorAnalyticsComponent({ parameter, endPoint }) {
   const [startDate, setStartDate] = useState(() => {
@@ -19,7 +22,7 @@ export default function SensorAnalyticsComponent({ parameter, endPoint }) {
   const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
-    setLoading(true);
+    // setLoading(true);  
     try {
       const response = await axios.get(`/api/sensorsData/${endPoint}`, {
         params: {
@@ -27,15 +30,13 @@ export default function SensorAnalyticsComponent({ parameter, endPoint }) {
           endDate: endDate,
         },
       });
-      if (
-        response.data.message === "No data found for the specified date range"
-      ) {
+      if (response.data.message === "No data found for the specified date range") {
         setFormattedTimeStamps([]);
         setData([]);
         setLoading(false);
         return;
       }
-      const sensorData = response.data.data;
+      const sensorData = response.data.data.data;
       const { formattedTimeStamps, data } = distributeData(
         sensorData,
         selectedInterval,
@@ -59,12 +60,29 @@ export default function SensorAnalyticsComponent({ parameter, endPoint }) {
     fetchData();
   }, [selectedInterval]);
 
+  const [isNavOpen, setIsNavOpen] = useState(false);
   return (
     <>
       {loading ? (
         <h1>Loading...</h1>
       ) : (
         <div className="flex flex-col md:items-start p-4 gap-4 w-[90vw] md:w-[60vw] lg:w-[40vw]">
+          <div className=" block md:hidden">
+            {isNavOpen ? (
+              <IoClose
+                className="absolute top-4 right-10 text-white block md:hidden text-[6vw] font-bold"
+                onClick={() => setIsNavOpen(false)}
+              />
+            ) : (
+              <GrMenu
+                className="absolute top-4 right-10 text-white block md:hidden text-[6vw] font-bold"
+                onClick={() => setIsNavOpen(true)}
+              />
+            )}
+            <div className="absolute w-[90vw] h-[100vw] z-10 p-0">
+            {isNavOpen && <NavLinks />}
+            </div>
+          </div>
           <h1>{parameter}</h1>
           <DatePickerComponent
             startDate={startDate}
@@ -72,7 +90,6 @@ export default function SensorAnalyticsComponent({ parameter, endPoint }) {
             setStartDate={setStartDate}
             setEndDate={setEndDate}
             fetchData={fetchData}
-            selectedInterval={selectedInterval}
           />
 
           {data.length === 0 && (

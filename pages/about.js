@@ -88,31 +88,31 @@ export default function About() {
           anywhere, empowering users to safeguard their environment with ease.
         </p>
 
-        <div class="my-6">
-          <h1 class="font-bold text-2xl underline">Node MCU ESP32</h1>
-          <div class="flex flex-col md:flex-row gap-8">
+        <div className="my-6">
+          <h1 className="font-bold text-2xl underline">Node MCU ESP32</h1>
+          <div className="flex flex-col md:flex-row gap-8">
             <Image
               src={ESP32}
               alt="Sensor"
-              class="w-[140vw] md:w-[20vw] object-contain"
+              className="w-[140vw] md:w-[20vw] object-contain"
             />
             <div className="w-[90vw] md:w-[40vw]">
-              <p class="font-bold">
+              <p className="font-bold">
                 Name:<span className="font-normal pl-1">ESP32</span>
               </p>
 
-              <p class="font-bold">
+              <p className="font-bold">
                 Microcontroller:
                 <span className="font-normal pl-1">
                   Tensilica Xtensa LX6 dual-core processor
                 </span>
               </p>
 
-              <p class="font-bold">
+              <p className="font-bold">
                 Operating Frequency:
                 <span className="font-normal pl-1">Up to 240 MHz</span>
               </p>
-              <p class="font-bold">
+              <p className="font-bold">
                 Wi-Fi:
                 <span className="font-normal pl-1">
                   {" "}
@@ -121,36 +121,36 @@ export default function About() {
                 </span>
               </p>
 
-              <p class="font-bold">
+              <p className="font-bold">
                 Flash Memory:<span className="font-normal pl-1">4 MB</span>
               </p>
-              <p class="font-bold">
+              <p className="font-bold">
                 RAM:<span className="font-normal pl-1">520 KB SRAM</span>
               </p>
-              <p class="font-bold">
+              <p className="font-bold">
                 GPIO:
                 <span className="font-normal pl-1">
                   Up to 36 GPIO pins (depending on the variant)
                 </span>
               </p>
-              <p class="font-bold">
+              <p className="font-bold">
                 Analog Inputs:
                 <span className="font-normal pl-1">Up to 18 ADC channels</span>
               </p>
-              <p class="font-bold">
+              <p className="font-bold">
                 Digital Interfaces:
                 <span className="font-normal pl-1">SPI, I2C, UART, I2S</span>
               </p>
-              <p class="font-bold">
+              <p className="font-bold">
                 Operating Voltage:<span className="font-normal pl-1">3.3V</span>
               </p>
-              <p class="font-bold">
+              <p className="font-bold">
                 Power Consumption:
                 <span className="font-normal pl-1">
                   Varies depending on usage, typically:
                 </span>
               </p>
-              <ul class="list-disc pl-6">
+              <ul className="list-disc pl-6">
                 <li>
                   Active mode: 80 mA (Wi-Fi), 7 mA (Bluetooth), 150 µA (RTC)
                 </li>

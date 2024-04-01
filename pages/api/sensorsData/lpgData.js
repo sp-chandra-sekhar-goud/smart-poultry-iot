@@ -7,8 +7,8 @@ import findNearestDateIndex from "../utils.js/findNearestDateIndex";
 const apiKey = "AIzaSyBQ1y9WawkhdP42aLje6VP0bAMMqTuNmUk";
 const SPREADSHEET_ID = "1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk";
 const sheets = google.sheets({ version: "v4", auth: apiKey });
-const endCol = "G";
-const endCol_num = 6;
+const endCol = "F";
+const endCol_num = 5;
 
 // Function to handle API request
 export default async function handler(req, res) {

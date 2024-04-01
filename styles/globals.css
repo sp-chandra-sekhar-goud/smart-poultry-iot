@@ -2,3 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@keyframes fade-in-out {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  .animated-fade-in-out {
+    display: hidden;
+    animation: fade-in-out 10s linear infinite;
+  }
+  
