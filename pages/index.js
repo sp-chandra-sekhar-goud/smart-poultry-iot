@@ -14,6 +14,7 @@ import { GrMenu } from "react-icons/gr";
 import { useMode } from "@/contexts/ModeContext";
 import NavLinks from "@/components/NavLinks";
 import ActuatorCard from "@/components/actuatorCard";
+import { useAuth } from "@/contexts/AuthContext";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -27,6 +28,8 @@ export default function Home() {
 
   const [lastUpdatedTime, setLastUpdatedTime] = useState("");
   const { mode, _ } = useMode();
+
+  const { user } = useAuth(); 
 
   useEffect(() => {
     async function fetchData() {

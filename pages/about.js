@@ -1,8 +1,6 @@
 import Layout from "@/components/Layout";
 import SensorCard from "@/components/sensorCard";
 
-import MQ6 from "../public/sensors/MQ6.png";
-import MQ7 from "../public/sensors/MQ7.png";
 import MQ135 from "../public/sensors/MQ135.png";
 import MQ137 from "../public/sensors/MQ137.png";
 import DHT22 from "../public/sensors/DHT22.png";
@@ -11,24 +9,6 @@ import Image from "next/image";
 
 export default function About() {
   const data = [
-    {
-      imgName: MQ6,
-      sensorName: "MQ6",
-      gases: "LPG, butane, propane, methane, alcohol, hydrogen",
-      range: "300-10,000 ppm (parts per million)",
-      accuracy: "±10% (for LPG)",
-      volts: "5V",
-      power: "~0.15A",
-    },
-    {
-      imgName: MQ7,
-      sensorName: "MQ7",
-      gases: "Carbon monoxide (CO)",
-      range: "20-2,000 ppm (parts per million)",
-      accuracy: "±10% (for CO)",
-      volts: "5V",
-      power: "~0.15A",
-    },
     {
       imgName: MQ135,
       sensorName: "MQ135",
@@ -71,6 +51,9 @@ export default function About() {
     />
   ));
 
+  const features_style =
+    "mb-4 font-medium bg-yellow-800 text-center rounded-md px-2 py-4 text-white";
+
   return (
     <Layout>
       <div className="p-8 w-[100vw] md:w-[75vw]">
@@ -79,74 +62,34 @@ export default function About() {
           Southern India
         </h1>
         <p className="mt-2 text-justify">
-          <span className="">Our</span> project offers real-time monitoring and control of poultry farms
-          in Southern India, featuring dynamic dashboards, in-depth analytics,
-          and offline functionality for uninterrupted operation.
+          <span className="">Our</span> project offers real-time monitoring and
+          control of poultry farms in Southern India, featuring dynamic
+          dashboards, in-depth analytics, and offline functionality for
+          uninterrupted operation.
         </p>
         <br />
         <div className="my-4 ">
-        <h1 className="font-bold mb-4 text-[6vw] md:text-[2vw] underline">
-          Key Features:
-        </h1>  
-          <ul>
-            <li className="mb-4">
-              <strong>Dynamic Dashboard Display:</strong> A user-friendly
-              interface provides real-time updates on poultry health, offering a
-              comprehensive overview of critical parameters.
-            </li>
-            <li className="mb-4">
-              <strong>In-Depth Analytics:</strong> Detailed analytics are
-              available for each monitored component, enabling farmers to delve
-              into specific aspects of their poultry farm's environment and make
-              informed decisions.
-            </li>
-            <li className="mb-4">
-              <strong>Dual Monitoring Modes:</strong> The system offers both
-              Interval Monitoring and Real-Time Monitoring, catering to
-              different needs and allowing users to choose the level of
-              granularity in data collection.
-            </li>
-            <li className="mb-4">
-              <strong>Multisensory Data Collection:</strong> Utilizing DHT22,
-              MQ135, and MQ137 sensors, the system gathers crucial data on
-              temperature, humidity, CO2 levels, and ammonia concentrations,
-              providing a holistic view of the farm's conditions.
-            </li>
-            <li className="mb-4">
-              <strong>Offline Data Storage:</strong> With the capability to
-              store data locally in the ESP32's built-in flash memory, the
-              prototype ensures continuous operation even in the absence of
-              internet connectivity, safeguarding against potential disruptions.
-            </li>
-            <li className="mb-4">
-              <strong>High-Frequency Data Sampling:</strong> The system reads
-              data at an impressive rate of every 5 seconds, ensuring timely and
-              accurate monitoring of environmental conditions within the poultry
-              farm.
-            </li>
-            <li className="mb-4">
-              <strong>Tailored for Southern India:</strong> Specifically
-              designed to meet the needs of poultry farms in Southern India, the
-              system addresses region-specific challenges and environmental
-              factors.
-            </li>
-            <li className="mb-4">
-              <strong>Scalability and Customization:</strong> Built with
-              scalability in mind, the system can be adapted to farms of varying
-              sizes and configurations, offering flexibility to meet diverse
-              requirements.
-            </li>
-            <li className="mb-4">
-              <strong>Remote Monitoring and Control:</strong> Farmers can
-              remotely monitor and control their poultry farm operations through
-              the integrated system, providing convenience and efficiency in
-              managing farm activities from anywhere.
-            </li>
+          <h1 className="font-bold mb-4 text-[6vw] md:text-[2vw] underline">
+            Key Features:
+          </h1>
+
+          <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <li className={features_style}>Dynamic Dashboard Display</li>
+            <li className={features_style}>In-Depth Analytics</li>
+            <li className={features_style}>Dual Monitoring Modes</li>
+            <li className={features_style}>Multisensory Data Collection</li>
+            <li className={features_style}>Offline Data Storage</li>
+            <li className={features_style}>High-Frequency Data Sampling</li>
+            <li className={features_style}>Tailored for Southern India</li>
+            <li className={features_style}>Scalability and Customization</li>
+            <li className={features_style}>Remote Monitoring and Control</li>
           </ul>
         </div>
 
         <div className="my-6">
-          <h1 className="font-bold mb-4 text-[6vw] md:text-[2vw] underline">Components</h1>
+          <h1 className="font-bold mb-4 text-[6vw] md:text-[2vw] underline">
+            Components
+          </h1>
           <h1 className="font-bold  underline">Node MCU ESP32</h1>
           <div className="flex flex-col md:flex-row gap-8">
             <Image
