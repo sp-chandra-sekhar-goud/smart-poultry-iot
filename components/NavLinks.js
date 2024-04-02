@@ -8,15 +8,11 @@ import { IoSettingsSharp } from "react-icons/io5";
 import whitetempIcon from "../public/whiteNavIcons/temp.png";
 import whitehumidityIcon from "../public/whiteNavIcons/humidity.png";
 import whiteammoniaIcon from "../public/whiteNavIcons/ammonia.png";
-import whitelpgIcon from "../public/whiteNavIcons/lpg.png";
-import whitecarbonMonoxideIcon from "../public/whiteNavIcons/carbon monoxide.png";
 import whiteco2Icon from "../public/whiteNavIcons/co2.png";
 
 import bluetempIcon from "../public/blueNavIcons/temp.png";
 import bluehumidityIcon from "../public/blueNavIcons/humidity.png";
 import blueammoniaIcon from "../public/blueNavIcons/ammonia.png";
-import bluelpgIcon from "../public/blueNavIcons/lpg.png";
-import bluecarbonMonoxideIcon from "../public/blueNavIcons/carbon monoxide.png";
 import blueco2Icon from "../public/blueNavIcons/co2.png";
 import { useRouter } from "next/router";
 
@@ -93,46 +89,6 @@ const NavLinks = () => {
           />
         )}
         Ammonia
-      </Link>
-      <Link
-        href={"/lpg"}
-        className={pathname.includes("/lpg") ? activelink : inactivelink}
-      >
-        {pathname.includes("/lpg") ? (
-          <Image
-            src={bluelpgIcon}
-            className="w-[8vw] md:w-[2.7vw] h-[8vw] md:h-[2.7vw] transform scale-150"
-            alt={"lpg"}
-          />
-        ) : (
-          <Image
-            src={whitelpgIcon}
-            className="w-[8vw] md:w-[2.7vw] h-[8vw] md:h-[2.7vw] transform scale-150"
-            alt={"lpg"}
-          />
-        )}
-        LPG
-      </Link>
-      <Link
-        href={"/carbon-monoxide"}
-        className={
-          pathname.includes("/carbon-monoxide") ? activelink : inactivelink
-        }
-      >
-        {pathname.includes("/carbon-monoxide") ? (
-          <Image
-            src={bluecarbonMonoxideIcon}
-            className="w-[8vw] md:w-[2.7vw] h-[8vw] md:h-[2.7vw] transform scale-150"
-            alt={"carbon-monoxide"}
-          />
-        ) : (
-          <Image
-            src={whitecarbonMonoxideIcon}
-            className="w-[8vw] md:w-[2.7vw] h-[8vw] md:h-[2.7vw] transform scale-150"
-            alt={"carbon-monoxide"}
-          />
-        )}
-        Carbon Monoxide
       </Link>
       <Link
         href={"/carbon-dioxide"}

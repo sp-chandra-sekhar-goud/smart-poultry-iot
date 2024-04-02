@@ -2,10 +2,11 @@
 import { google } from "googleapis";
 import parseCustomDate from "../utils.js/parseCustomDate";
 import findNearestDateIndex from "../utils.js/findNearestDateIndex";
+import { API_KEY } from "../utils.js/API_KEY";
 
 // Define spreadsheet ID as a constant
-const apiKey = "AIzaSyBQ1y9WawkhdP42aLje6VP0bAMMqTuNmUk";
-const SPREADSHEET_ID = "1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk";
+const apiKey = API_KEY;
+const SPREADSHEET_ID = "1BD0oLF4mbVE-aO1VTPWXOURTvx4Xj73xjVfLfcxglos";
 const sheets = google.sheets({ version: "v4", auth: apiKey });
 const endCol = "E";
 const endCol_num = 4;

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function SensorCard({ imgName, sensorName, gases, range, accuracy, volts, power }) {
   return (
-    <div className="max-w-sm rounded overflow-hidden shadow-lg">
+    <div className="max-w-sm rounded overflow-hidden shadow-xl">
       <div className="px-6 py-4">
         <div className="mb-4">
           <div className="w-full h-48 relative">

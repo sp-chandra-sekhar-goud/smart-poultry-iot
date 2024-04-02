@@ -35,7 +35,6 @@ const distributeData = (
 
   const uniqueSensorData = uniqueData(sensorData);
 
-
   let expectedNextTimeStamp = getExpectedNextTimeStamp(
     uniqueSensorData[0][0],
     intervalMinutes
@@ -53,11 +52,11 @@ const distributeData = (
     total += parseFloat(value);
     observations++;
 
-    if (a > b || ((i < uniqueSensorData.length - 1) && (c > a))) {
+    if (a >= b || ((i < uniqueSensorData.length - 1) && (c > a))) {
       const val = total / observations;
       data.push(val.toFixed(2));
-  
-      if (a > b) {
+      
+      if (a >= b) {
         timeStamps.push(uniqueSensorData[uniqueSensorData.length - 1][0]);
         break;
       }
@@ -72,7 +71,6 @@ const distributeData = (
       );
     }
   }
-
 
   const formattedTimeStamps = formatTimeStamp(timeStamps);
   return { formattedTimeStamps, data };

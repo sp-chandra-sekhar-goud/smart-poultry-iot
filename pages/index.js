@@ -6,15 +6,14 @@ import { useEffect, useState } from "react";
 import tempIcon from "../public/icons/temp.png";
 import humidityIcon from "../public/icons/humidity.png";
 import ammoniaIcon from "../public/icons/ammonia.png";
-import lpgIcon from "../public/icons/lpg.png";
-import carbonMonoxideIcon from "../public/icons/carbon monoxide.png";
-import co2Icon from "../public/icons/co2.png";
+
 
 import { IoClose } from "react-icons/io5";
 import { GrMenu } from "react-icons/gr";
 
 import { useMode } from "@/contexts/ModeContext";
 import NavLinks from "@/components/NavLinks";
+import ActuatorCard from "@/components/actuatorCard";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -132,27 +131,17 @@ export default function Home() {
               unit={"Parts Per Million (ppm)"}
               path={"/ammonia"}
             />
-            <Card
-              imgPath={lpgIcon}
-              title={"lpg"}
-              data={lpg}
-              unit={"Parts Per Million (ppm)"}
-              path={"/lpg"}
+            <ActuatorCard
+              iconName={"FaFan"}
+              item={"Fan"}
+              status={"On"}
             />
-            <Card
-              imgPath={carbonMonoxideIcon}
-              title={"Carbon Monoxide (co)"}
-              data={carbonMonoxideData}
-              unit={"Parts Per Million (ppm)"}
-              path={"/carbon-monoxide"}
+            <ActuatorCard
+              iconName={"FaLightbulb"}
+              item={"Light"}
+              status={"Off"}
             />
-            <Card
-              imgPath={co2Icon}
-              title={"Carbon dioxide (co2)"}
-              data={co2Data}
-              unit={"Parts Per Million (ppm)"}
-              path={"/carbon-dioxide"}
-            />
+            
           </div>
         </div>
       )}

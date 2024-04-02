@@ -1,12 +1,13 @@
 import { google } from 'googleapis';
+import { API_KEY } from '../utils.js/API_KEY';
 
-const apiKey = 'AIzaSyBQ1y9WawkhdP42aLje6VP0bAMMqTuNmUk'; 
+const apiKey = API_KEY;
 const sheets = google.sheets({ version: 'v4', auth: apiKey });
 
 export default function handler(req, res) {
   if (req.method === "GET") {
     sheets.spreadsheets.values.get({
-      spreadsheetId: '1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk',
+      spreadsheetId: "1BD0oLF4mbVE-aO1VTPWXOURTvx4Xj73xjVfLfcxglos",
       range: 'Sheet1',
     })
     .then(response => {
@@ -18,7 +19,7 @@ export default function handler(req, res) {
 
       // Fetch the last 100 rows using the calculated range
       return sheets.spreadsheets.values.get({
-        spreadsheetId: '1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk',
+        spreadsheetId: "1BD0oLF4mbVE-aO1VTPWXOURTvx4Xj73xjVfLfcxglos",
         range: range,
       });
     })

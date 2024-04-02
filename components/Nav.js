@@ -18,11 +18,11 @@ function Nav() {
 
   return (
     <>
-    <aside className="z-6 text-white lg:p-4 mt-2 ml-2 ">
+    <aside className="z-6 text-white px-2 lg:p-4 mt-2 ml-2 ">
       <a href="/" className={`${inactivelink} flex justify-between pr-6 `}>
         <div className="flex items-center gap-2">
         <MdOutlineMonitorHeart className="text-[6vw] md:text-[3vw] lg:text-[1.5vw]" />
-        <h1>Air Quality Monitoring</h1>
+        <h1>CPMS</h1>
         </div>
         {/* <div className="block md:hidden">
         {isNavOpen ? <IoClose className="text-[6vw] font-bold" onClick={() => setIsNavOpen(false)}/> : <GrMenu className="text-[6vw] font-bold" onClick={() => setIsNavOpen(true)}/>}

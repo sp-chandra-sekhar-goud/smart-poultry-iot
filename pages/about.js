@@ -75,21 +75,79 @@ export default function About() {
     <Layout>
       <div className="p-8 w-[100vw] md:w-[75vw]">
         <h1 className="font-bold text-[6vw] md:text-[2vw] underline">
-          Air Quality Monitoring
+          Advanced Sensor Network For Monitoring & Controlling Poultry Farms in
+          Southern India
         </h1>
         <p className="mt-2 text-justify">
-          Transforming Air Quality: Our project employs cutting-edge technology
-          with a suite of sensors including MQ6, MQ7, MQ135, and MQ137, along
-          with DHT22, to monitor vital air parameters like CO, CO2, Ammonia,
-          Propane, Butane, Temperature, and Humidity. Powered by ESP32
-          microcontrollers, we ensure real-time monitoring and instant alerts to
-          users when gas levels breach safety thresholds. Our dynamic dashboard
-          provides comprehensive data visualization accessible from any device,
-          anywhere, empowering users to safeguard their environment with ease.
+          <span className="">Our</span> project offers real-time monitoring and control of poultry farms
+          in Southern India, featuring dynamic dashboards, in-depth analytics,
+          and offline functionality for uninterrupted operation.
         </p>
+        <br />
+        <div className="my-4 ">
+        <h1 className="font-bold mb-4 text-[6vw] md:text-[2vw] underline">
+          Key Features:
+        </h1>  
+          <ul>
+            <li className="mb-4">
+              <strong>Dynamic Dashboard Display:</strong> A user-friendly
+              interface provides real-time updates on poultry health, offering a
+              comprehensive overview of critical parameters.
+            </li>
+            <li className="mb-4">
+              <strong>In-Depth Analytics:</strong> Detailed analytics are
+              available for each monitored component, enabling farmers to delve
+              into specific aspects of their poultry farm's environment and make
+              informed decisions.
+            </li>
+            <li className="mb-4">
+              <strong>Dual Monitoring Modes:</strong> The system offers both
+              Interval Monitoring and Real-Time Monitoring, catering to
+              different needs and allowing users to choose the level of
+              granularity in data collection.
+            </li>
+            <li className="mb-4">
+              <strong>Multisensory Data Collection:</strong> Utilizing DHT22,
+              MQ135, and MQ137 sensors, the system gathers crucial data on
+              temperature, humidity, CO2 levels, and ammonia concentrations,
+              providing a holistic view of the farm's conditions.
+            </li>
+            <li className="mb-4">
+              <strong>Offline Data Storage:</strong> With the capability to
+              store data locally in the ESP32's built-in flash memory, the
+              prototype ensures continuous operation even in the absence of
+              internet connectivity, safeguarding against potential disruptions.
+            </li>
+            <li className="mb-4">
+              <strong>High-Frequency Data Sampling:</strong> The system reads
+              data at an impressive rate of every 5 seconds, ensuring timely and
+              accurate monitoring of environmental conditions within the poultry
+              farm.
+            </li>
+            <li className="mb-4">
+              <strong>Tailored for Southern India:</strong> Specifically
+              designed to meet the needs of poultry farms in Southern India, the
+              system addresses region-specific challenges and environmental
+              factors.
+            </li>
+            <li className="mb-4">
+              <strong>Scalability and Customization:</strong> Built with
+              scalability in mind, the system can be adapted to farms of varying
+              sizes and configurations, offering flexibility to meet diverse
+              requirements.
+            </li>
+            <li className="mb-4">
+              <strong>Remote Monitoring and Control:</strong> Farmers can
+              remotely monitor and control their poultry farm operations through
+              the integrated system, providing convenience and efficiency in
+              managing farm activities from anywhere.
+            </li>
+          </ul>
+        </div>
 
         <div className="my-6">
-          <h1 className="font-bold text-2xl underline">Node MCU ESP32</h1>
+          <h1 className="font-bold mb-4 text-[6vw] md:text-[2vw] underline">Components</h1>
+          <h1 className="font-bold  underline">Node MCU ESP32</h1>
           <div className="flex flex-col md:flex-row gap-8">
             <Image
               src={ESP32}
