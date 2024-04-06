@@ -1,6 +1,5 @@
 import Nav from "./Nav";
 import { useSession } from "next-auth/react";
-import { LoginPage } from "./loginPage";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 export default function Layout({ children }) {
