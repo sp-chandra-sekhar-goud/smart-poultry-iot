@@ -1,13 +1,13 @@
 import "../styles/globals.css";
 import { ModeProvider } from "../contexts/ModeContext";
-import { AuthProvider } from "../contexts/AuthContext";
+import { SessionProvider } from "next-auth/react";
 
 export default function App({ Component, pageProps }) {
   return (
-    <AuthProvider>
+    <SessionProvider>
       <ModeProvider>
         <Component {...pageProps} />
       </ModeProvider>
-    </AuthProvider>
+    </SessionProvider>
   );
 }

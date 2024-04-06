@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import Card from "@/components/card";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSession } from "next-auth/react"; 
 
 import tempIcon from "../public/icons/temp.png";
 import humidityIcon from "../public/icons/humidity.png";
@@ -19,6 +20,7 @@ import ActuatorCard from "@/components/actuatorCard";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const session = useSession();
 
   const [tempData, setTempData] = useState([]);
   const [humidityData, setHumidityData] = useState([]);
@@ -29,7 +31,7 @@ export default function Home() {
   const { mode, _ } = useMode();
 
 
-  useEffect(() => {
+  useEffect(() => { 
     async function fetchData() {
     if(mode == "Real-Time Monitoring"){
       axios
@@ -111,14 +113,20 @@ export default function Home() {
               {isNavOpen && <NavLinks />}
               </div>
             </div>
-            <div className="flex flex-col lg:flex-row justify-between">
-              <h1 className="text-lg px-4 py-2 lg:my-4">
-                Lastly updated at{" "}
+            <div className="flex flex-col lg:flex-row justify-between px-4 py-4">
+              <h1 className="text-lg">
+                Welcome back, <br/>
+                <span className="font-bold">{session?.data?.user?.name}</span>
+              </h1>
+              <div className="flex flex-col">
+              <h1 className="text-lg ">
+                Lastly updated at
                 <span className="font-bold">{lastUpdatedTime}</span>
               </h1>
-              <h1 className="text-lg px-4 py-2 lg:my-4">
+              <h1 className="text-lg ">
                 Mode: <span className="font-bold">{mode}</span>
               </h1>
+              </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
               <Card

@@ -1,19 +1,12 @@
 import { MdOutlineMonitorHeart, MdSpaceDashboard } from "react-icons/md";
-import { FaCircleInfo } from "react-icons/fa6";
-import { IoClose, IoSettingsSharp } from "react-icons/io5";
-import { GrMenu } from "react-icons/gr";
 import { useRouter } from "next/router";
 
-import { useState } from "react";
 import NavLinks from "./NavLinks";
 
 function Nav() {
   const inactivelink = " flex gap-1 text-white items-center py-2 mb-4 ";
-  const activelink = " flex gap-1 items-center py-2 mb-4 text-blue-800 bg-white rounded-l-lg";
 
-  const [isNavOpen, setIsNavOpen] = useState(false);
   const router = useRouter();
-  const { pathname } = router;
   
 
   return (
@@ -24,9 +17,6 @@ function Nav() {
         <MdOutlineMonitorHeart className="text-[6vw] md:text-[3vw] lg:text-[1.5vw]" />
         <h1>CPMS</h1>
         </div>
-        {/* <div className="block md:hidden">
-        {isNavOpen ? <IoClose className="text-[6vw] font-bold" onClick={() => setIsNavOpen(false)}/> : <GrMenu className="text-[6vw] font-bold" onClick={() => setIsNavOpen(true)}/>}
-        </div> */}
       </a>
       <div className="hidden md:block"> <NavLinks/> </div>
     </aside>

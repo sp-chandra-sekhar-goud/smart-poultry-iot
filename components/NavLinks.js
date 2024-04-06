@@ -4,6 +4,7 @@ import Image from "next/image";
 import { MdSpaceDashboard } from "react-icons/md";
 import { FaCircleInfo } from "react-icons/fa6";
 import { IoSettingsSharp } from "react-icons/io5";
+import { CiLogout } from "react-icons/ci";
 
 import whitetempIcon from "../public/whiteNavIcons/temp.png";
 import whitehumidityIcon from "../public/whiteNavIcons/humidity.png";
@@ -15,6 +16,8 @@ import bluehumidityIcon from "../public/blueNavIcons/humidity.png";
 import blueammoniaIcon from "../public/blueNavIcons/ammonia.png";
 import blueco2Icon from "../public/blueNavIcons/co2.png";
 import { useRouter } from "next/router";
+
+import { signOut } from "next-auth/react";
 
 const NavLinks = () => {
   const router = useRouter();
@@ -128,6 +131,16 @@ const NavLinks = () => {
         <IoSettingsSharp className=" md:w-[1.5vw] h-[4vw] md:h-[1.5vw]" />
         <span className="pl-2"></span>
         Settings
+      </Link>
+      <Link
+        onClick={signOut}
+        href={"/"}
+        className={inactivelink}
+      >
+        <span className="pl-1 mt-8"></span>
+        <CiLogout className="font-bold md:w-[1.5vw] h-[4vw] md:h-[1.5vw]" />
+        <span className="pl-2"></span>
+        Log out
       </Link>
     </nav>
   );
