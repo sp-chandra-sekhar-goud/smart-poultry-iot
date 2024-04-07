@@ -19,7 +19,7 @@ import SignIn from "./sign-in";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
- 
+
   const [tempData, setTempData] = useState([]);
   const [humidityData, setHumidityData] = useState([]);
   const [co2Data, setCo2Data] = useState([]);
@@ -28,8 +28,7 @@ export default function Home() {
   const [lastUpdatedTime, setLastUpdatedTime] = useState("");
   const { mode, _ } = useMode();
 
-  const [fanStatus, setFanStatus] = useState();
-  const [lightStatus, setLightStatus] = useState();
+  const [itemStatus, setItemStatus] = useState({ fan: "", light: "" });
 
   const session = useSession();
   const status = session.status;
@@ -39,8 +38,9 @@ export default function Home() {
       axios
         .get("/api/actuatorsData/")
         .then((response) => {
-          setFanStatus(response.data.data[0][1] ? "On" : "Off");
-          setLightStatus(response.data.data[0][2] ? "On" : "Off");
+          const fanStatus = response.data.data[0][1] == "1" ? "On" : "Off";
+          const lightStatus = response.data.data[0][2] == "1" ? "On" : "Off";
+          setItemStatus({ fan: fanStatus, light: lightStatus });
         })
         .catch((error) => {
           console.log(error);
@@ -97,19 +97,37 @@ export default function Home() {
     });
   };
 
+  // Toggle individual item status
+  const toggleItemStatus = (itemName) => {
+    setItemStatus((prevStatus) => ({
+      ...prevStatus,
+      [itemName]: prevStatus[itemName] === "On" ? "Off" : "On",
+    }));
+  };
+
+  // Toggle fan status
+  const toggleFanStatus = () => {
+    toggleItemStatus("fan");
+  };
+
+  // Toggle light status
+  const toggleLightStatus = () => {
+    toggleItemStatus("light");
+  };
+
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const getDisplayName = () => {
     if (session?.data?.user?.name) {
       return session?.data?.user?.name;
     }
-    let email = session?.data?.user?.email
-    let name  = email.split("@")[0]; 
+    let email = session?.data?.user?.email;
+    let name = email.split("@")[0];
     return name;
   };
 
   return status == "unauthenticated" ? (
-    <SignIn/>
+    <SignIn />
   ) : (
     <Layout>
       {loading ? (
@@ -176,12 +194,15 @@ export default function Home() {
               unit={"Parts Per Million (ppm)"}
               path={"/ammonia"}
             />
-            <ActuatorCard iconName={"FaFan"} item={"Fan"} status={fanStatus} setStatus={setFanStatus} />
             <ActuatorCard
-              iconName={"FaLightbulb"}
-              item={"Light"}
-              status={lightStatus}
-              setStatus={setLightStatus}
+              itemName={"Fan"}
+              itemStatus={{ status: itemStatus.fan }}
+              setStatus={toggleFanStatus}
+            />
+            <ActuatorCard
+              itemName={"Light"}
+              itemStatus={{ status: itemStatus.light }}
+              setStatus={toggleLightStatus}
             />
           </div>
         </div>

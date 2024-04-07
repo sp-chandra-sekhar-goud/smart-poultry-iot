@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "poultry-419115",
+  "private_key_id": "bd8ba020bda7ac722a8cf7e44da17bf049fd09d3",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDAHfRqZjOWZVn2\nZW4RqdvuDBVvU6dlFyehNXPWSYmvLjZfDZ92ZhFNlHnmHCooxVh3cpx0xyYJnDI1\nNGa0SvsYWnjhgLu37zjFKA93b5ziTG+r+s80B+jYTP62EEnYRBrCo55gK6+QXtDQ\n3r1CfJaU+N4vji9oFUfRahB9zFGVxN0IDTsOsY3XLZYdJGZloQv7clnCfaaYvtHy\nyDMBaPEaKNAgyksIKqr/RwYwZJ+BwFzbFmyD9jdMuhl/AGIkfvk0FgG5iFVLjyWs\nOhsQ1jxKRWIFYi8kg/bHaNs7UBa7Bp23Oj0Zli09yxWFMTLNEZnpGKJ9CWZbw9Cm\nCy/XN9SJAgMBAAECggEAHKH6RQdRZfdaBpqMYo6NzDc51JtDphHi4qhsSMIyBo1d\nJiKKIyPILWdVGaIV+HidHERVJCRwO1tvsjVKn1FThggp3vYIRDwfmmbDk1nrqGCa\n/idFzWvmXKJxDeJ0lwpjcKHhH1Uzd9Fhztd7npah/LbwqmbHEvyk9QWZSp5yhF8N\n861P6onyxC5ZB4VCk4T6oywlf1AUhX6Z9P+FgJjoFC97vUU3xCEl4PBpzJMrKl+o\nGtwyRHd1m8xVtAQYtY8DuhJJAGtHz/+dsfraH/qcQQo4LTHLcJ3bFq1KUvU3M+Ku\n6Fg0TC5MsxSvQlAPIEHG7vfeoVG7uzFtE3kGivTY1wKBgQDyLTrnE9dz3fGJZJVK\nVZZp2ad+C+MlwF3YNJ8Xf+t96QUc+QBwbBizUNxACYD1Y5q7KDHFZkMaeqRXVK5Q\nDmMIjQcMv/5BRwc87lH4vLtJORjiVKBRfDX54FIzVuvbgrJwKpQkDcIccVr3gSH9\n+CS03i3qRyGJFv5ruADjPssJTwKBgQDLFTxAMhrX/PQMCv41Zlj4EYxbiZY/pcCP\n+OjQ28Hq1dZlszk0F6mnbQsTz4IUq7wS75lqW8HrPSbY0GojV1ag4dHLoyH+plYX\n2cQeoy+VT+7PMuaRjDoGKrY7RibEIpdU7aI3EnGWSTlKnHVinHkSDQF0IHT5aAS/\nk90+sRqepwKBgEuXIpON9eoMlJ+17YNOQ6y2azlErJnT+XbKtf23x+F9IkNw1VpB\n41PVIWo7jS0K8fkJCr/6s2dIcJNxsxb55p98pX6tTsdBTFkQajWhczPfxoyerYvB\noXdlNUMhFm1l1hx8rdCzGquWFja678k98vchgmNl4GnR64fj3yMPLoCxAoGARq3w\nV0NY9l0SLvLQgJNLWaL5343mHea5OyJdHPuu5OVhhem3efrWT+/ykAWDd2BBx7Fe\nCpc+yXlyALmghwZJnxqY4q+3ECKiChD/Yc5XrDaynahQeM1+EFFjNQP4UADd/G/s\nKhCgObboWqBTdmuQ84hVPi5hp7/dDzQOJ1iKNDcCgYEA3Y29Z6lPZlXRtGWztt61\njDU1BXOay0C4JM+2yKT9Oo1mAEayPO2UKHhc3p9DjFuEjqoo5OJDGIrD/QIxANnT\nVAPTD3GE1GaycIP7WIeMcfo4c7i8CVMx7yE1DVP0PSYTtba4ir5QdqprblsPR0tz\nzCzGwoP5UMVZ0fkIpXvr6Pg=\n-----END PRIVATE KEY-----\n",
+  "client_email": "chandu-poultry-project@poultry-419115.iam.gserviceaccount.com",
+  "client_id": "108044176460428876088",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/chandu-poultry-project%40poultry-419115.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
