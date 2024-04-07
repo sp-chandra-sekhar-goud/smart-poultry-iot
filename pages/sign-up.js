@@ -5,23 +5,52 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { FcGoogle } from "react-icons/fc";
 import { FaArrowRight } from "react-icons/fa6";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/lib/firebaseconfig";
 
-export const LoginPage = () => {
+export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const session = useSession();
+  const status = session.status;
   const router = useRouter();
 
-  const handleSignInWithEmailAndPassword = async (e) => {
+  useEffect(() => {
+    console.log(status);
+    if (status == "authenticated") {
+      router.push("/");
+    }
+  }, [status]);
+
+  const handleSignUpWithEmailAndPassword = async (e) => {
     e.preventDefault();
-    signIn('credentials', {email, password, redirect: true, callbackUrl: '/'})
+    try {
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((res) => {
+          signIn("credentials", {
+            email,
+            password,
+            redirect: true,
+            callbackUrl: "/",
+          }).then(() => {
+            window.location.reload();
+          });
+        })
+        .catch((e) => {
+          console.log(e.code);
+          if (e.code == "auth/email-already-in-use") {
+            setError("Email already in use");
+          }
+        });
+    } catch (e) {}
   };
 
   return (
     <div className="flex flex-col items-center justify-center md:flex-row bg-blue-800 min-h-screen">
       <div className="w-[35vw] bg-white h-fit px-6 py-8 rounded shadow-lg">
         <h1>Welcome !!!</h1>
-        <form onSubmit={handleSignInWithEmailAndPassword}>
+        <form onSubmit={handleSignUpWithEmailAndPassword}>
           <div className="mt-2">
             <label htmlFor="email" className="block text-gray-900">
               Email:
@@ -56,10 +85,21 @@ export const LoginPage = () => {
             type="submit"
             className="w-full my-3 mt-4 flex gap-2 items-center justify-center text-white bg-gray-800 px-4 py-3 rounded-md"
           >
-            Login
+            Register
             <FaArrowRight />
           </button>
-        <h4>Don't have an account? <span onClick={() => router.push("/sign-up")} className="cursor-pointer underline">Sign Up</span> </h4>
+          {error && (
+            <h1 className="text-red-600 font-medium text-center">{error}!</h1>
+          )}
+          <h4>
+            Already have an account?
+            <span
+              onClick={() => router.push("/sign-in")}
+              className="cursor-pointer  underline"
+            >
+              Sign In
+            </span>
+          </h4>
         </form>
         <div className="flex ">
           <div className="w-full flex items-center mt-4">
@@ -77,5 +117,4 @@ export const LoginPage = () => {
       </div>
     </div>
   );
-};
-
+}

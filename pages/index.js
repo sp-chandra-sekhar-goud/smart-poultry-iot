@@ -3,7 +3,6 @@ import Card from "@/components/card";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 
 import tempIcon from "../public/icons/temp.png";
 import humidityIcon from "../public/icons/humidity.png";
@@ -16,11 +15,11 @@ import { GrMenu } from "react-icons/gr";
 import { useMode } from "@/contexts/ModeContext";
 import NavLinks from "@/components/NavLinks";
 import ActuatorCard from "@/components/actuatorCard";
-import { LoginPage } from "@/components/loginPage";
+import SignIn from "./sign-in";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-
+ 
   const [tempData, setTempData] = useState([]);
   const [humidityData, setHumidityData] = useState([]);
   const [co2Data, setCo2Data] = useState([]);
@@ -100,8 +99,17 @@ export default function Home() {
 
   const [isNavOpen, setIsNavOpen] = useState(false);
 
+  const getDisplayName = () => {
+    if (session?.data?.user?.name) {
+      return session?.data?.user?.name;
+    }
+    let email = session?.data?.user?.email
+    let name  = email.split("@")[0]; 
+    return name;
+  };
+
   return status == "unauthenticated" ? (
-    <LoginPage />
+    <SignIn/>
   ) : (
     <Layout>
       {loading ? (
@@ -125,9 +133,9 @@ export default function Home() {
             </div>
           </div>
           <div className="flex flex-col lg:flex-row justify-between px-4 py-4">
-            <h1 className="text-lg">
+            <h1 className="flex flex-row lg:flex-col text-lg">
               Welcome back, <br />
-              <span className="font-bold">{session?.data?.user?.name}</span>
+              <span className="ml-1 font-bold">{getDisplayName()}</span>
             </h1>
             <div className="flex flex-col">
               <h1 className="text-lg ">
