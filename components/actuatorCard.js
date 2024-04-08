@@ -3,26 +3,38 @@ import { useEffect, useState } from "react";
 import { FaFan, FaLightbulb } from "react-icons/fa";
 
 export default function ActuatorCard({ itemName, itemStatus, setStatus }) {
-  function handleActuatorStatus() {
+  const [newFanStatus, setNewFanStatus] = useState("");
+  const [newLightStatus, setNewLightStatus] = useState("");
 
+  function handleActuatorStatus() {
+    let newFanStatus = "",
+      newLightStatus = "";
+    if (itemName == "Fan") {
+      newFanStatus = itemStatus.fan === "Off" ? "On" : "Off";
+      newLightStatus = itemStatus.light;
+    } else {
+      newFanStatus = itemStatus.fan;
+      newLightStatus = itemStatus.light === "Off" ? "On" : "Off";
+    }
+
+    setNewFanStatus(newFanStatus);
+    setNewLightStatus(newLightStatus);
+
+    setStatus({ fan: newFanStatus, light: newLightStatus });
+
+    const postData = {
+      fan: newFanStatus, 
+      light: newLightStatus,
+    };
     
-    // const newFanStatus = itemName === "Fan" ? (itemStatus.status === "Off" ? "On" : "Off") : itemStatus.status;
-    // const newLightStatus = itemName === "Light" ? (itemStatus.status === "Off" ? "On" : "Off") : itemStatus.status;
-  
-    // const postData = {
-    //   fan: newFanStatus, // Update fan status if itemName is Fan
-    //   light: newLightStatus, // Update light status if itemName is Light
-    // };
-    // console.log(postData);
-    // // Send POST request to update actuator data
-    // axios
-    //   .post("/api/actuatorsData", postData)
-    //   .then((response) => {
-    //     console.log("Actuator status updated successfully:", response.data);
-    //   })
-    //   .catch((error) => {
-    //     console.error("Error updating actuator status:", error);
-    //   });
+    axios
+      .post("/api/actuatorsData", postData)
+      .then((response) => {
+        console.log("Actuator status updated successfully:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error updating actuator status:", error);
+      });
   }
 
   return (
@@ -31,14 +43,14 @@ export default function ActuatorCard({ itemName, itemStatus, setStatus }) {
         {itemName === "Fan" && (
           <FaFan
             className={`${
-              itemStatus.status === "On" ? "animate-spin text-blue-800" : ""
+              newFanStatus === "On" ? "animate-spin text-blue-800" : ""
             } text-[10vw] md:text-[4.5vw] lg:text-[3vw] my-4`}
           />
         )}
         {itemName === "Light" && (
           <FaLightbulb
             className={`${
-              itemStatus.status === "On" ? "text-yellow-400" : "text-grey-100"
+              newLightStatus === "On" ? "text-yellow-400" : "text-grey-100"
             } text-[10vw] md:text-[4.5vw] lg:text-[3vw] my-4`}
           />
         )}
@@ -47,10 +59,27 @@ export default function ActuatorCard({ itemName, itemStatus, setStatus }) {
         <h1 className={` mt-1 text-2xl font-bold`}>{itemName}</h1>
         <p
           className={` ${
-            itemStatus.status === "On" ? "text-green-800" : "text-red-800"
-          } mt-1 text-sm font-bold`}
+            itemName === "Fan"
+              ? newFanStatus === "On"
+                ? "text-green-800"
+                : "text-red-800"
+              : newLightStatus === "On"
+              ? "text-green-800"
+              : "text-red-800"
+          } mt-1 text-sm font-bold flex `}
         >
-          Status: {itemStatus.status}
+          Status:&nbsp;{" "}
+          {itemName === "Fan" ? (
+            newFanStatus === "On" ? (
+              "On"
+            ) : (
+              "Off"
+            )
+          ) : newLightStatus === "On" ? (
+           "On"
+          ) : (
+           "Off"
+          )}
         </p>
       </div>
       <div
@@ -59,7 +88,17 @@ export default function ActuatorCard({ itemName, itemStatus, setStatus }) {
         }}
         className="border-2 border-blue-800 px-3 py-1 mt-4 text-blue-800 font-medium rounded shadow-lg cursor-pointer"
       >
-        {itemStatus.status === "On" ? <h1>Turn Off</h1> : <h1>Turn On</h1>}
+        {itemName === "Fan" ? (
+          newFanStatus === "On" ? (
+            <h1>Turn Off</h1>
+          ) : (
+            <h1>Turn On</h1>
+          )
+        ) : newLightStatus === "On" ? (
+          <h1>Turn Off</h1>
+        ) : (
+          <h1>Turn On</h1>
+        )}
       </div>
     </div>
   );

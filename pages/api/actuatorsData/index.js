@@ -7,16 +7,16 @@ export default function handler(req, res) {
     const sheets = google.sheets({ version: 'v4', auth: apiKey });
 
     sheets.spreadsheets.values.get({
-      spreadsheetId: "1oBdI6XEf7j4dw50KPNls3UueVipch0F9z8mTxqYML7s",
-      range: 'Sheet1',
+      spreadsheetId: "1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk",
+      range: 'Sheet2',
     })
     .then(response => {
       const values = response.data.values;
       const lastRowIndex = values.length - 1; // Index of the last row
-      const range = `Sheet1!A${lastRowIndex + 1}:C${lastRowIndex + 1}`; // Specify the last row only
+      const range = `Sheet2!A${lastRowIndex + 1}:C${lastRowIndex + 1}`; // Specify the last row only
 
       return sheets.spreadsheets.values.get({
-        spreadsheetId: "1oBdI6XEf7j4dw50KPNls3UueVipch0F9z8mTxqYML7s",
+        spreadsheetId: "1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk",
         range: range,
       });
     })
@@ -29,7 +29,6 @@ export default function handler(req, res) {
       res.status(500).json({ message: 'Internal server error' });
     });
   } else if (req.method === "POST") {
-    console.log("POST Method called");
     const auth = new google.auth.GoogleAuth({
       keyFile: './pages/api/actuatorsData/google.json',
       scopes: ['https://www.googleapis.com/auth/spreadsheets']
@@ -37,8 +36,8 @@ export default function handler(req, res) {
   
     async function writeToSheet(postData) {
       const sheets = google.sheets({ version: 'v4', auth })
-      const spreadsheetId = "1oBdI6XEf7j4dw50KPNls3UueVipch0F9z8mTxqYML7s"
-      const range = 'Sheet1!A1:C1'; 
+      const spreadsheetId = "1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk"
+      const range = 'Sheet2!A1:C1'; 
       const valueInputOption = 'USER_ENTERED'
   
       const timestamp = new Date().toISOString(); 

@@ -97,23 +97,23 @@ export default function Home() {
     });
   };
 
-  // Toggle individual item status
-  const toggleItemStatus = (itemName) => {
-    setItemStatus((prevStatus) => ({
-      ...prevStatus,
-      [itemName]: prevStatus[itemName] === "On" ? "Off" : "On",
-    }));
-  };
+  // // Toggle individual item status
+  // const toggleItemStatus = (itemName) => {
+  //   setItemStatus((prevStatus) => ({
+  //     ...prevStatus,
+  //     [itemName]: prevStatus[itemName] === "On" ? "Off" : "On",
+  //   }));
+  // };
 
-  // Toggle fan status
-  const toggleFanStatus = () => {
-    toggleItemStatus("fan");
-  };
+  // // Toggle fan status
+  // const toggleFanStatus = () => {
+  //   toggleItemStatus("fan");
+  // };
 
-  // Toggle light status
-  const toggleLightStatus = () => {
-    toggleItemStatus("light");
-  };
+  // // Toggle light status
+  // const toggleLightStatus = () => {
+  //   toggleItemStatus("light");
+  // };
 
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -196,13 +196,13 @@ export default function Home() {
             />
             <ActuatorCard
               itemName={"Fan"}
-              itemStatus={{ status: itemStatus.fan }}
-              setStatus={toggleFanStatus}
+              itemStatus={itemStatus}
+              setStatus={setItemStatus}
             />
             <ActuatorCard
               itemName={"Light"}
-              itemStatus={{ status: itemStatus.light }}
-              setStatus={toggleLightStatus}
+              itemStatus={itemStatus}
+              setStatus={setItemStatus}
             />
           </div>
         </div>
