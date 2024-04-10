@@ -7,7 +7,7 @@ export default function handler(req, res) {
     const sheets = google.sheets({ version: 'v4', auth: apiKey });
 
     sheets.spreadsheets.values.get({
-      spreadsheetId: "1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk",
+      spreadsheetId: "1BD0oLF4mbVE-aO1VTPWXOURTvx4Xj73xjVfLfcxglos",
       range: 'Sheet2',
     })
     .then(response => {
@@ -16,7 +16,7 @@ export default function handler(req, res) {
       const range = `Sheet2!A${lastRowIndex + 1}:C${lastRowIndex + 1}`; // Specify the last row only
 
       return sheets.spreadsheets.values.get({
-        spreadsheetId: "1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk",
+        spreadsheetId: "1BD0oLF4mbVE-aO1VTPWXOURTvx4Xj73xjVfLfcxglos",
         range: range,
       });
     })
@@ -36,7 +36,7 @@ export default function handler(req, res) {
   
     async function writeToSheet(postData) {
       const sheets = google.sheets({ version: 'v4', auth })
-      const spreadsheetId = "1T7ZjJ-Ha8QK0-PqBoCWUsIPVQJryVcRsrLd2xsYoJdk"
+      const spreadsheetId = "1BD0oLF4mbVE-aO1VTPWXOURTvx4Xj73xjVfLfcxglos"
       const range = 'Sheet2!A1:C1'; 
       const valueInputOption = 'USER_ENTERED'
   

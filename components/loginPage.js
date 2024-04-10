@@ -19,7 +19,7 @@ export const LoginPage = () => {
 
   return (
     <div className="flex flex-col items-center justify-center md:flex-row bg-blue-800 min-h-screen">
-      <div className="w-[35vw] bg-white h-fit px-6 py-8 rounded shadow-lg">
+      <div className="w-[95vw] md:w-[60vw] lg:w-[35vw] bg-white h-fit px-6 py-8 rounded shadow-lg">
         <h1>Welcome !!!</h1>
         <form onSubmit={handleSignInWithEmailAndPassword}>
           <div className="mt-2">

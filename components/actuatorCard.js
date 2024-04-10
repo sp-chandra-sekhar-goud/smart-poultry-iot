@@ -6,6 +6,10 @@ export default function ActuatorCard({ itemName, itemStatus, setStatus }) {
   const [newFanStatus, setNewFanStatus] = useState("");
   const [newLightStatus, setNewLightStatus] = useState("");
 
+  useEffect(()=>{
+    setNewFanStatus(itemStatus.fan);
+    setNewLightStatus(itemStatus.light);
+  }, [])
   function handleActuatorStatus() {
     let newFanStatus = "",
       newLightStatus = "";
@@ -30,7 +34,7 @@ export default function ActuatorCard({ itemName, itemStatus, setStatus }) {
     axios
       .post("/api/actuatorsData", postData)
       .then((response) => {
-        console.log("Actuator status updated successfully:", response.data);
+        console.log("Actuator status updated successfully");
       })
       .catch((error) => {
         console.error("Error updating actuator status:", error);
