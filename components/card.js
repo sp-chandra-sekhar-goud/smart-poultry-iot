@@ -4,8 +4,9 @@ import { useEffect, useState } from "react";
 
 export default function Card({ imgPath, title, data, unit, path }) {
   const [animate, setAnimate] = useState(false);
-  const occurrences = data.length;
-  const sum = data.reduce(
+  const validData = data.filter(value => !isNaN(value));
+  const occurrences = validData.length;
+  const sum = validData.reduce(
     (accumulator, currentValue) => accumulator + +currentValue,
     0
   );

@@ -96,25 +96,7 @@ export default function Home() {
       setLastUpdatedTime(latestTimestamp);
     });
   };
-
-  // // Toggle individual item status
-  // const toggleItemStatus = (itemName) => {
-  //   setItemStatus((prevStatus) => ({
-  //     ...prevStatus,
-  //     [itemName]: prevStatus[itemName] === "On" ? "Off" : "On",
-  //   }));
-  // };
-
-  // // Toggle fan status
-  // const toggleFanStatus = () => {
-  //   toggleItemStatus("fan");
-  // };
-
-  // // Toggle light status
-  // const toggleLightStatus = () => {
-  //   toggleItemStatus("light");
-  // };
-
+ 
   const [isNavOpen, setIsNavOpen] = useState(false);
 
   const getDisplayName = () => {

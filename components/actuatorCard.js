@@ -86,7 +86,8 @@ export default function ActuatorCard({ itemName, itemStatus, setStatus }) {
           )}
         </p>
       </div>
-      <div
+      
+      {/* <div
         onClick={() => {
           handleActuatorStatus();
         }}
@@ -103,7 +104,7 @@ export default function ActuatorCard({ itemName, itemStatus, setStatus }) {
         ) : (
           <h1>Turn On</h1>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
