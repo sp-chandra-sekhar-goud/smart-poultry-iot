@@ -8,17 +8,17 @@ const handleOneDayInterval = ({ sensorData, setFormattedTimeStamps, setData }) =
         dataByDay.set(datePart, { total: 0, observations: 0 });
       }
       const dayData = dataByDay.get(datePart);
-      dayData.total += parseFloat(data);
+      dayData.total += (!isNaN(data)) ? parseFloat(data) : 0;
       dayData.observations++;
     });
 
     // Calculate average data for each day
     const timeStamps = [];
     const data = [];
-    dataByDay.forEach((dayData, datePart) => {
+    dataByDay.forEach((dayData, datePart) => { 
       const averageTemp = dayData.total / dayData.observations;
-      timeStamps.push(datePart);
-      data.push(averageTemp.toFixed(2));
+        timeStamps.push(datePart);
+        data.push(averageTemp.toFixed(2));
     });
 
     // Format timestamps

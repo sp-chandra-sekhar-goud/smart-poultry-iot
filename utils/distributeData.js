@@ -34,7 +34,7 @@ const distributeData = (
   const data = [];
 
   const uniqueSensorData = uniqueData(sensorData);
-
+ 
   let expectedNextTimeStamp = getExpectedNextTimeStamp(
     uniqueSensorData[0][0],
     intervalMinutes
@@ -45,9 +45,9 @@ const distributeData = (
 
     const [timestamp, value] = uniqueSensorData[i];
 
-    let a = new Date(expectedNextTimeStamp);
-    let b = new Date(uniqueSensorData[uniqueSensorData.length - 1][0]);
-    let c = (i < uniqueSensorData.length - 1) && new Date(uniqueSensorData[i + 1][0]);
+    let a = expectedNextTimeStamp;
+    let b = uniqueSensorData[uniqueSensorData.length - 1][0];
+    let c = (i < uniqueSensorData.length - 1) && uniqueSensorData[i + 1][0];
     
     total += parseFloat(value);
     observations++;
@@ -71,8 +71,10 @@ const distributeData = (
       );
     }
   }
-
+// console.log(timeStamps);
   const formattedTimeStamps = formatTimeStamp(timeStamps);
+
+  // console.log("formattedTimeStamps", formattedTimeStamps);
   return { formattedTimeStamps, data };
 };
 
